@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EcoTracker</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1f1f1f;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden; /* Added overflow-x property */
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 36px;
+            width: 100%;
+            
+        }
+        .navigation {
+            
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            overflow-x: auto; /* Added overflow-x property */
+            white-space: nowrap; /* Prevents line breaks */
+        }
+        .navigation a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 30px;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .login-container {
+            margin-top: 100px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+        .login-container h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .login-form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #444;
+            color: #fff;
+        }
+        .login-form input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        a:hover{
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        EcoTracker
+    </header>
+    <div class="navigation" id="navigation">
+        <a href="index.html">Home</a>
+        <a href="state.html">State</a>
+        <a href="zone_portfolio.html">Zones</a>
+        <a href="add_data.html">Data Entry</a>
+        <a href="about.html">About</a>
+        <a href="#" id="logout-link" style="display: none;">Logout</a>
+    </div>
+    <div class="login-container">
+        <h2>Login to EcoTracker</h2>
+        <form class="login-form" id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <div id="welcome-back" style="display: none;">
+        Welcome back!
+    </div>
+
+    <script>
+        document.getElementById("login-form").onsubmit = function(event) {
+            event.preventDefault(); // Prevent form submission
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            // Check if username and password match
+            if (username === "@governmentemployee#123" && password === "@giveaccesstous") {
+                // Redirect to Welcome Back page
+                window.location.href = "welcome_back.html";
+            } else {
+                alert("Incorrect username or password. Please try again.");
+            }
+        };
+    </script>
+</body>
+</html>
+

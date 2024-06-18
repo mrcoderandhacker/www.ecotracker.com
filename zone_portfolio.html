@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zone Portfolio - EcoTracker</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1f1f1f;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 36px;
+            width: 100%;
+        }
+        .navigation {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-bottom: 20px;
+        }
+        .navigation a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 30px;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .zone-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 1800px;
+        }
+        .zone-card {
+            max-width: 250px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: calc(33.33% - 40px);
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+           align-items: center;
+        }
+        .zone-card h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        .zone-card p {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .zone-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        img{
+            transition: transform 0.1s ease-in-out;
+        }
+        img:hover{
+            transform: scale(0.95);
+            
+        }
+        .details-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .details-button:hover {
+            background-color: #338238;
+            color: white;
+        }
+        a:hover{
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="margin-left: 17px;">EcoTracker</div>
+    </header>
+    <div style="margin-left: 17px;" class="navigation">
+        <a href="index.html">Home</a>
+        <a href="state.html">State</a>
+        <a href="zone_portfolio.html">Zones</a>
+        <a href="add_data.html">Data Entry</a>
+        <a href="about.html">About</a>
+        <a href="compare.html">Compare</a>
+        <a href="login.html">Login</a>
+    </div>
+    <div class="zone-container">
+        <div class="zone-card">
+            <h2>BALLARI</h2>
+            <img src="images/zone1.jpg" alt="Zone 1" class="zone-image">
+            <p>Districts: Ballari, Koppal, and part of Raichur. <br>&nbsp;
+
+            </p>
+            <a href="zone1.html" class="details-button">Details</a>
+        </div>
+        <div class="zone-card">
+            <h2>BELAGAVI</h2>
+            <img src="images/zone2.jpg" alt="Zone 2" class="zone-image">
+            <p>Districts: Belagavi, Bagalkot, and Vijayapura. <br>&nbsp;
+            </p>
+            <a href="zone2.html" class="details-button">Details</a>
+        </div>
+        <!--Will Add more zone cards for remaining zones -->
+        <div class="zone-card">
+            <h2>BENGALURU</h2>
+            <img src="images/zone3.jpg" alt="Zone 3" class="zone-image">
+            <p>Districts: Bengaluru Urban, Bengaluru Rural, and Ramanagara.</p>
+            <a href="zone3.html" class="details-button">Details</a>
+        </div>
+        <div class="zone-card">
+            <h2>DAVANGERE</h2>
+            <img src="images/zone4.jpg" alt="Zone 4" class="zone-image">
+            <p>Districts: Davangere, Chitradurga, Shivamogga, and newly added Haveri.
+            </p>
+            <a href="zone4.html" class="details-button">Details</a>
+        </div>
+        <div class="zone-card">
+            <h2>HASSAN</h2>
+            <img src="images/zone5.jpg" alt="Zone 5" class="zone-image">
+            <p>Districts: Hassan, Chikkamagaluru, part of Shivamogga, and newly added Tumakuru.
+            </p>
+            <a href="zone5.html" class="details-button">Details</a>
+        </div>
+        <div class="zone-card">
+            <h2>HUBBALLI</h2>
+            <img src="images/zone6.jpg" alt="Zone 6" class="zone-image">
+            <p>Districts: Dharwad, Gadag, Haveri, and part of Uttara Kannada. <br>&nbsp;
+            </p>
+            <a href="zone6.html" class="details-button">Details</a>
+        </div>
+        <div class="zone-card">
+            <h2>KALABURAGI</h2>
+            <img src="images/zone7.jpg" alt="Zone 7" class="zone-image">
+            <p>Districts: Kalaburagi, Bidar, Yadgir, and Raichur. <br>&nbsp;
+            </p>
+            <a href="zone7.html" class="details-button">Details</a>
+        </div>
+        <div class="zone-card">
+            <h2>MANGALURU</h2>
+            <img src="images/zone8.jpg" alt="Zone 8" class="zone-image">
+            <p>Districts: Dakshina Kannada, Udupi, and Uttara Kannada. <br>&nbsp;
+            </p>
+            <a href="zone8.html" class="details-button">Details</a>
+        </div>
+        <div class="zone-card">
+            <h2>MYSURU</h2>
+            <img src="images/zone9.jpg" alt="Zone 9" class="zone-image">
+            <p>Districts: Mysuru, Mandya, Chamarajanagar, and Kodagu. <br>&nbsp;
+            </p>
+            <a href="zone9.html" class="details-button">Details</a>
+        </div>
+        <div class="zone-card">
+            <h2>TUMAKURU</h2>
+            <img src="images/zone10.jpg" alt="Zone 10" class="zone-image">
+            <p>Districts: Tumakuru, Kolar, Chikkaballapur, and districts from the eastern Karnataka.</p>
+            <a href="zone10.html" class="details-button">Details</a>
+        </div>
+        

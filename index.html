@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTracker</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1f1f1f;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        header {
+            background-color: #4caf4fb5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 36px;
+        }
+        nav {
+            background-color: #333333bb;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 30px;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        nav a:hover{
+            color: #818080;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+            margin-bottom: auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .intro {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .feature {
+            width: calc(33.33% - 20px);
+            background-color: rgba(51, 51, 51, 0.775);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.378);
+        }
+        .feature h3 {
+            color: #4CAF50;
+        }
+        footer {
+            background-color: #111111c4;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="videos/raindrops_on_a_window.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <header>
+        EcoTracker
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="state.html">State</a>
+        <a href="zone_portfolio.html">Zones</a>
+        <a href="add_data.html">Data Entry</a>
+        <a href="about.html">About</a>
+        <a href="compare.html">Compare</a>
+        <a href="interaction.html">Community</a>
+        <a href="login.html">Login</a>
+        
+    </nav>
+    <main>
+        
+        <div class="intro">
+            Welcome to EcoTracker - Your Ultimate Waste Tracking Solution!
+        </div>
+        <div class="features">
+            <div class="feature">
+                <h3>Track Waste</h3>
+                <p>Effortlessly track waste generated in your area.</p>
+            </div>
+            <div class="feature">
+                <h3>Data Visualization</h3>
+                <p>Visualize waste data through interactive charts and graphs.</p>
+            </div>
+            <div class="feature">
+                <h3>Community Engagement</h3>
+                <p>Join hands with others in your community for a cleaner environment.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; 2024 EcoTracker
+    </footer>
+</body>
+</html>

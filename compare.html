@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Zones - EcoTracker</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1f1f1f;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 36px;
+            width: 100%;
+        }
+        .navigation {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        .navigation a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+        }
+        .form-container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin-top: 20px;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-container select {
+            width: 45%;
+            padding: 10px;
+            margin: 0 10px 20px 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #555;
+            color: white;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+        .comparison-result {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .comparison-zone {
+            width: 45%;
+            background-color: #444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+        .comparison-zone h3 {
+            color: #4CAF50;
+        }
+        .comparison-zone p {
+            margin: 10px 0;
+        }
+        .comparison-zone img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        EcoTracker
+    </header>
+    <div class="navigation">
+        <a href="index.html">Home</a>
+        <a href="state.html">State</a>
+        <a href="zone_portfolio.html">Zones</a>
+        <a href="add_data.html">Add Data</a>
+        <a href="about.html">About</a>
+        <a href="compare.html">Compare</a>
+    </div>
+    <div class="form-container">
+        <h2>Compare Zones</h2>
+        <form id="compareForm">
+            <label for="zone1">Select Zone 1:</label>
+            <select id="zone1" name="zone1" required>
+                <option value="selectzone">Select</option>
+                <option value="zone1">Ballari</option>
+                <option value="zone2">Belagavi</option>
+                <option value="zone3">Bengaluru</option>
+                <option value="zone4">Davangere</option>
+                <option value="zone5">Hassan</option>
+                <option value="zone6">Hubballi</option>
+                <option value="zone7">Kalaburagi</option>
+                <option value="zone8">Mangaluru</option>
+                <option value="zone9">Mysuru</option>
+                <option value="zone10">Tumakuru</option>
+            </select>
+
+            <label for="zone2">Select Zone 2:</label>
+            <select id="zone2" name="zone2" required>
+                <option value="selectzone">Select</option>
+                <option value="zone1">Ballari</option>
+                <option value="zone2">Belagavi</option>
+                <option value="zone3">Bengaluru</option>
+                <option value="zone4">Davangere</option>
+                <option value="zone5">Hassan</option>
+                <option value="zone6">Hubballi</option>
+                <option value="zone7">Kalaburagi</option>
+                <option value="zone8">Mangaluru</option>
+                <option value="zone9">Mysuru</option>
+                <option value="zone10">Tumakuru</option>
+            </select> <br>
+
+            <button type="submit">Compare</button>
+        </form>
+        <div class="comparison-result" id="comparisonResult">
+            <div class="comparison-zone" id="zone1Data">
+                <h3 id="zone1Name">Zone 1 Data</h3>
+                <img src="https://via.placeholder.com/400x200" alt="Zone 1 Image" id="zone1Image">
+                <p id="zone1TotalProduced">Total Garbage Produced: </p>
+                <p id="zone1TotalRecyclable">Total Recyclable Garbage: </p>
+                <p id="zone1TotalReducible">Total Reducible Garbage: </p>
+                <p id="zone1TotalTreated">Total Garbage Treated: </p>
+                <p id="zone1TotalRecycled">Total Recycled Garbage: </p>
+                <p id="zone1EcoRatio">Eco Ratio: </p>
+                <p id="zone1RecyclingEfficiency">Recycling Efficiency: </p>
+            </div>
+                        <div class="comparison-zone" id="zone2Data">
+                <h3 id="zone2Name">Zone 2 Data</h3>
+                <img src="https://via.placeholder.com/400x200" alt="Zone 2 Image" id="zone2Image">
+                                <p id="zone2TotalProduced">Total Garbage Produced: </p>
+                <p id="zone2TotalRecyclable">Total Recyclable Garbage: </p>
+                <p id="zone2TotalReducible">Total Reducible Garbage: </p>
+                <p id="zone2TotalTreated">Total Garbage Treated: </p>
+                <p id="zone2TotalRecycled">Total Recycled Garbage: </p>
+                <p id="zone2EcoRatio">Eco Ratio: </p>
+                <p id="zone2RecyclingEfficiency">Recycling Efficiency: </p>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="comparisonChart"></canvas>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.getElementById('compareForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const zone1 = document.getElementById('zone1').value;
+            const zone2 = document.getElementById('zone2').value;
+
+            const zone1Data = JSON.parse(localStorage.getItem(zone1)) || [];
+            const zone2Data = JSON.parse(localStorage.getItem(zone2)) || [];
+
+            function calculateZoneData(data) {
+                let totalProduced = 0;
+                let totalRecyclable = 0;
+                let totalReducible = 0;
+                let totalTreated = 0;
+                let totalRecycled = 0;
+
+                data.forEach(entry => {
+                    totalProduced += entry.totalProduced;
+                    totalRecyclable += entry.totalRecyclable;
+                    totalReducible += entry.totalReducible;
+                    totalTreated += entry.totalTreated;
+                    totalRecycled += entry.totalRecycled;
+                });
+
+                const ecoRatio = ((totalTreated + totalRecycled) / totalProduced * 100).toFixed(2);
+                const recyclingEfficiency = ((totalRecycled / totalRecyclable) * 100).toFixed(2);
+
+                return {
+                    totalProduced,
+                    totalRecyclable,
+                    totalReducible,
+                    totalTreated,
+                    totalRecycled,
+                    ecoRatio,
+                    recyclingEfficiency
+                };
+            }
+
+            const zone1Summary = calculateZoneData(zone1Data);
+            const zone2Summary = calculateZoneData(zone2Data);
+
+            document.getElementById('zone1Name').textContent = zone1;
+            document.getElementById('zone1TotalProduced').textContent = `Total Garbage Produced: ${zone1Summary.totalProduced} tons`;
+            document.getElementById('zone1TotalRecyclable').textContent = `Total Recyclable Garbage: ${zone1Summary.totalRecyclable} tons`;
+            document.getElementById('zone1TotalReducible').textContent = `Total Reducible Garbage: ${zone1Summary.totalReducible} tons`;
+            document.getElementById('zone1TotalTreated').textContent = `Total Garbage Treated: ${zone1Summary.totalTreated} tons`;
+            document.getElementById('zone1TotalRecycled').textContent = `Total Recycled Garbage: ${zone1Summary.totalRecycled} tons`;
+            document.getElementById('zone1EcoRatio').textContent = `Eco Ratio: ${zone1Summary.ecoRatio}%`;
+            document.getElementById('zone1RecyclingEfficiency').textContent = `Recycling Efficiency: ${zone1Summary.recyclingEfficiency}%`;
+            document.getElementById('zone1Image').src = `images/${zone1}.jpg`; // assuming the images are named after the zone IDs
+
+            document.getElementById('zone2Name').textContent = zone2;
+            document.getElementById('zone2TotalProduced').textContent = `Total Garbage Produced: ${zone2Summary.totalProduced} tons`;
+            document.getElementById('zone2TotalRecyclable').textContent = `Total Recyclable Garbage: ${zone2Summary.totalRecyclable} tons`;
+            document.getElementById('zone2TotalReducible').textContent = `Total Reducible Garbage: ${zone2Summary.totalReducible} tons`;
+            document.getElementById('zone2TotalTreated').textContent = `Total Garbage Treated: ${zone2Summary.totalTreated} tons`;
+            document.getElementById('zone2TotalRecycled').textContent = `Total Recycled Garbage: ${zone2Summary.totalRecycled} tons`;
+            document.getElementById('zone2EcoRatio').textContent = `Eco Ratio: ${zone2Summary.ecoRatio}%`;
+            document.getElementById('zone2RecyclingEfficiency').textContent = `Recycling Efficiency: ${zone2Summary.recyclingEfficiency}%`;
+            document.getElementById('zone2Image').src = `images/${zone2}.jpg`; // assuming the images are named after the zone IDs
+
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Total Produced', 'Total Recyclable', 'Total Reducible', 'Total Treated', 'Total Recycled', 'Eco Ratio', 'Recycling Efficiency'],
+                    datasets: [
+                        {
+                            label: zone1,
+                            data: [zone1Summary.totalProduced, zone1Summary.totalRecyclable, zone1Summary.totalReducible, zone1Summary.totalTreated, zone1Summary.totalRecycled, zone1Summary.ecoRatio, zone1Summary.recyclingEfficiency],
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: zone2,
+                            data: [zone2Summary.totalProduced, zone2Summary.totalRecyclable, zone2Summary.totalReducible, zone2Summary.totalTreated, zone2Summary.totalRecycled, zone2Summary.ecoRatio, zone2Summary.recyclingEfficiency],
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

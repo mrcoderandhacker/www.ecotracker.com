@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zone 1 - EcoTracker</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1f1f1f;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 36px;
+            width: 100%;
+        }
+        .navigation {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-bottom: 20px;
+        }
+        .navigation a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 30px;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .zone-details-container {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .zone-large-image {
+            width: 60%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .garbage-summary h3 {
+            margin: 0;
+        }
+        .detailed-info {
+            margin-top: 30px;
+        }
+        .detailed-info table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .detailed-info table th,
+        .detailed-info table td {
+            padding: 10px;
+            border: 1px solid #fff;
+        }
+        .graph-container {
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .date-wise-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .date-wise-table th,
+        .date-wise-table td {
+            padding: 10px;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="margin-left: 17px;">EcoTracker</div>
+    </header>
+    <div style="margin-left: 17px;" class="navigation">
+        <a href="index.html">Home</a>
+        <a href="state.html">State</a>
+        <a href="zone_portfolio.html">Zones</a>
+        <a href="add_data.html">Data Entry</a>
+        <a href="about.html">About</a>
+        <a href="compare.html">Compare</a>
+        <a href="login.html">Login</a>
+    </div>
+    <div class="zone-details-container">
+        <h1>Hassan</h1>
+        <img src="images/zone2_large.jpg" alt="Zone 2" class="zone-large-image">
+        <h2 id="ecoRatio">Eco Ratio: </h2>
+        <div class="garbage-summary">
+            <h3 id="totalProduced">Total Garbage Produced: </h3>
+            <h3 id="totalTreated">Total Garbage Treated: </h3>
+        </div>
+        <div class="detailed-info">
+            <h2>Detailed Information</h2>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Produced</th>
+                    <th>Treated</th>
+                </tr>
+                <tr>
+                    <td>Total Non-Recyclable Garbage</td>
+                    <td id="nonRecyclableProduced"> tons</td>
+                    <td id="nonRecyclableTreated"> tons</td>
+                </tr>
+                <tr>
+                    <td>Total Recyclable Garbage</td>
+                    <td id="recyclableProduced"> tons</td>
+                    <td id="recyclableTreated"> tons</td>
+                </tr>
+            </table>
+            <h3 id="recyclingEfficiency">Recycling Efficiency: </h3>
+            <div class="graph-container">
+                <canvas id="zoneChart"></canvas>
+            </div>
+            <h2>Date-wise Garbage Data</h2>
+            <table class="date-wise-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Total Garbage Produced (tons)</th>
+                        <th>Total Garbage Treated (tons)</th>
+                    </tr>
+                </thead>
+                <tbody id="dateWiseData"></tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const zoneData = JSON.parse(localStorage.getItem('zone5')) || [];
+
+            function calculateAndDisplayData(zoneData) {
+                const totalProduced = zoneData.reduce((sum, entry) => sum + entry.totalProduced, 0);
+                const totalTreated = zoneData.reduce((sum, entry) => sum + entry.totalTreated, 0);
+                const totalRecyclable = zoneData.reduce((sum, entry) => sum + entry.totalRecyclable, 0);
+                const totalRecycled = zoneData.reduce((sum, entry) => sum + entry.totalRecycled, 0);
+                const totalReducible = zoneData.reduce((sum, entry) => sum + entry.totalReducible, 0);
+                const ecoRatio = ((totalTreated + totalRecycled) / totalProduced).toFixed(2);
+                const recyclingEfficiency = ((totalRecycled / totalRecyclable) * 100).toFixed(2);
+
+                document.getElementById('ecoRatio').textContent = `Eco Ratio: ${ecoRatio}`;
+                document.getElementById('recyclingEfficiency').textContent = `Recycling Efficiency: ${recyclingEfficiency}%`;
+
+                document.getElementById('totalProduced').textContent = `Total Garbage Produced: ${totalProduced} tons`;
+                document.getElementById('totalTreated').textContent = `Total Garbage Treated: ${totalTreated + totalRecycled} tons`;
+                document.getElementById('nonRecyclableProduced').textContent = `${totalProduced - totalRecyclable} tons`;
+                document.getElementById('nonRecyclableTreated').textContent = `${totalTreated - totalRecyclable} tons`;
+                document.getElementById('recyclableProduced').textContent = `${totalRecyclable} tons`;
+                document.getElementById('recyclableTreated').textContent = `${totalRecycled} tons`;
+
+                const dateWiseData = document.getElementById('dateWiseData');
+                dateWiseData.innerHTML = '';
+                zoneData.forEach(entry => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${entry.date}</td>
+                        <td>${entry.totalProduced}</td>
+                        <td>${entry.totalTreated}</td>
+                    `;
+                    dateWiseData.appendChild(row);
+                });
+
+                // Update Chart
+                updateChart(zoneData.map(entry => entry.date), zoneData.map(entry => entry.totalProduced), zoneData.map(entry => entry.totalTreated));
+            }
+
+            function updateChart(labels, dataProduced, dataTreated) {
+                const ctx = document.getElementById('zoneChart').getContext('2d');
+                const zoneChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Total Garbage Produced (tons)',
+                            data: dataProduced,
+                            borderColor: '#4CAF50',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderWidth: 2
+                        }, {
+                            label: 'Total Garbage Treated (tons)',
+                            data: dataTreated,
+                            borderColor: '#f44336',
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            }
+
+            // Call function to display data
+            calculateAndDisplayData(zoneData);
+        });
+    </script>
+</body>
+</html>
